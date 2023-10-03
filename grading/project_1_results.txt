@@ -8,7 +8,7 @@ Expected equality of these values:
   the_machine->accumulator
     Which is: 0
   10
-[  FAILED  ] lmsm_machine_suite.test_add_instruction_works (0 ms)
+[  FAILED  ] lmsm_machine_suite.test_add_instruction_works (1 ms)
 [ RUN      ] lmsm_machine_suite.test_add_instruction_properly_caps_values
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/lmsm.cpp:20: Failure
 Expected equality of these values:
@@ -57,7 +57,7 @@ Expected equality of these values:
   the_machine->program_counter
     Which is: 0
   20
-[  FAILED  ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (1 ms)
+[  FAILED  ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero
 [       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero (0 ms)
 [ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero
