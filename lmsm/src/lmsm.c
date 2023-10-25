@@ -100,7 +100,22 @@ void lmsm_i_sub(lmsm *our_little_machine, int location) {
 
 void lmsm_i_out(lmsm *our_little_machine) {
    // TODO, append the current accumulator to the output_buffer in the LMSM
-	our_little_machine->output_buffer[0] = our_little_machine->accumulator;
+	// our_little_machine->output_buffer[0] = our_little_machine->accumulator;
+    bool isFound = false;
+    int i = 0;
+    while(!isFound){
+        if(our_little_machine->output_buffer[i] == '\000'){
+            isFound = true;
+        } else{
+            i++;
+        }
+    }
+    char * out = calloc(3, sizeof (int));
+    itoa(our_little_machine->accumulator, out, 10);
+    strcat(out, " ");
+
+    strcat(&our_little_machine->output_buffer[i], out);
+
 }
 
 void lmsm_i_inp(lmsm *our_little_machine) {
