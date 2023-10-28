@@ -101,7 +101,7 @@ Expected equality of these values:
 [----------] 43 tests from lmsm_machine_suite (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 43 tests from 1 test suite ran. (0 ms total)
+[==========] 43 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 41 tests.
 [  FAILED  ] 2 tests, listed below:
 [  FAILED  ] lmsm_machine_suite.test_output_instruction
