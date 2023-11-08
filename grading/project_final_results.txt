@@ -1,0 +1,479 @@
+Running main() from /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/lib/googletest/src/gtest_main.cc
+[==========] Running 90 tests from 5 test suites.
+[----------] Global test environment set-up.
+[----------] 6 tests from instruction_construction
+[ RUN      ] instruction_construction.multiplication_works_in_firth
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/firth.cpp:19: Failure
+Expected equality of these values:
+  the_machine->accumulator
+    Which is: 0
+  6
+[  FAILED  ] instruction_construction.multiplication_works_in_firth (0 ms)
+[ RUN      ] instruction_construction.max_works_in_firth
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/firth.cpp:31: Failure
+Expected equality of these values:
+  the_machine->accumulator
+    Which is: 0
+  3
+[  FAILED  ] instruction_construction.max_works_in_firth (0 ms)
+[ RUN      ] instruction_construction.make_instruction_basic_instruction_fields_are_set
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:16: Failure
+Expected equality of these values:
+  instruction->slots
+    Which is: 0
+  1
+[  FAILED  ] instruction_construction.make_instruction_basic_instruction_fields_are_set (0 ms)
+[ RUN      ] instruction_construction.make_instruction_spushi_takes_two_slots
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:24: Failure
+Expected equality of these values:
+  instruction->slots
+    Which is: 0
+  2
+[  FAILED  ] instruction_construction.make_instruction_spushi_takes_two_slots (0 ms)
+[ RUN      ] instruction_construction.make_instruction_call_takes_three_slots
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:31: Failure
+Expected equality of these values:
+  instruction->slots
+    Which is: 0
+  3
+[  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
+[ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
+[       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
+[----------] 6 tests from instruction_construction (0 ms total)
+
+[----------] 10 tests from parsing_tests
+[ RUN      ] parsing_tests.simple_instruction_parsing_works
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:58: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.simple_instruction_parsing_works (0 ms)
+[ RUN      ] parsing_tests.two_instruction_parsing_works_w_space
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:68: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.two_instruction_parsing_works_w_space (0 ms)
+[ RUN      ] parsing_tests.two_instruction_parsing_works_w_newline
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:78: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.two_instruction_parsing_works_w_newline (0 ms)
+[ RUN      ] parsing_tests.label_is_parsed_correctly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:88: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.label_is_parsed_correctly (0 ms)
+[ RUN      ] parsing_tests.numeric_reference_works_for_branch
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:99: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.numeric_reference_works_for_branch (0 ms)
+[ RUN      ] parsing_tests.label_reference_works_for_branch
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:110: Failure
+Value of: result->root == nullptr
+  Actual: true
+Expected: false
+[  FAILED  ] parsing_tests.label_reference_works_for_branch (0 ms)
+[ RUN      ] parsing_tests.unknown_instruction_is_handled
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:120: Failure
+Expected equality of these values:
+  result->error
+    Which is: NULL
+  ASM_ERROR_UNKNOWN_INSTRUCTION
+    Which is: 0xaaaaad3e03b0
+[  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
+[ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:127: Failure
+Expected equality of these values:
+  result->error
+    Which is: NULL
+  ASM_ERROR_ARG_REQUIRED
+    Which is: 0xaaaaad3e03d0
+[  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
+[ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:134: Failure
+Expected equality of these values:
+  result->error
+    Which is: NULL
+  ASM_ERROR_OUT_OF_RANGE
+    Which is: 0xaaaaad3e03f8
+[  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
+[ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:141: Failure
+Expected equality of these values:
+  result->error
+    Which is: NULL
+  ASM_ERROR_OUT_OF_RANGE
+    Which is: 0xaaaaad3e03f8
+[  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
+[----------] 10 tests from parsing_tests (0 ms total)
+
+[----------] 30 tests from code_generation
+[ RUN      ] code_generation.add_instruction_generates_properly
+[       OK ] code_generation.add_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sub_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:167: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  201
+[  FAILED  ] code_generation.sub_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.store_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:179: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  301
+[  FAILED  ] code_generation.store_instruction_generates_properly (1 ms)
+[ RUN      ] code_generation.load_immediate_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:191: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  401
+[  FAILED  ] code_generation.load_immediate_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.load_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:203: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  501
+[  FAILED  ] code_generation.load_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:215: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  601
+[  FAILED  ] code_generation.branch_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_if_zero_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:227: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  701
+[  FAILED  ] code_generation.branch_if_zero_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_if_positive_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:239: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  801
+[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.input_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:251: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  901
+[  FAILED  ] code_generation.input_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.out_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:263: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  902
+[  FAILED  ] code_generation.out_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.halt_instruction_generates_properly
+[       OK ] code_generation.halt_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.cob_instruction_generates_properly
+[       OK ] code_generation.cob_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.dat_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:299: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  001
+    Which is: 1
+[  FAILED  ] code_generation.dat_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spush_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:311: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  920
+[  FAILED  ] code_generation.spush_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spop_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:323: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  921
+[  FAILED  ] code_generation.spop_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdup_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:335: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  922
+[  FAILED  ] code_generation.sdup_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdrop_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:347: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  923
+[  FAILED  ] code_generation.sdrop_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sswap_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:359: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  924
+[  FAILED  ] code_generation.sswap_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sadd_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:371: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  930
+[  FAILED  ] code_generation.sadd_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.ssub_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:383: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  931
+[  FAILED  ] code_generation.ssub_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smax_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:395: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  934
+[  FAILED  ] code_generation.smax_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smin_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:407: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  935
+[  FAILED  ] code_generation.smin_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smul_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:419: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  932
+[  FAILED  ] code_generation.smul_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdiv_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:431: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  933
+[  FAILED  ] code_generation.sdiv_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spushi_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:444: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  401
+[  FAILED  ] code_generation.spushi_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.call_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:459: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  401
+[  FAILED  ] code_generation.call_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.ret_instruction_generates_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:473: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  911
+[  FAILED  ] code_generation.ret_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.instructions_next_to_one_another_generate_in_order_properly
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:490: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  401
+[  FAILED  ] code_generation.instructions_next_to_one_another_generate_in_order_properly (0 ms)
+[ RUN      ] code_generation.labels_resolve_at_code_generation_time
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:508: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  501
+[  FAILED  ] code_generation.labels_resolve_at_code_generation_time (0 ms)
+[ RUN      ] code_generation.bad_label_causes_error
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:523: Failure
+Expected equality of these values:
+  result->error
+    Which is: NULL
+  ASM_ERROR_BAD_LABEL
+    Which is: 0xaaaaad3e03e8
+[  FAILED  ] code_generation.bad_label_causes_error (0 ms)
+[----------] 30 tests from code_generation (1 ms total)
+
+[----------] 1 test from end_to_end
+[ RUN      ] end_to_end.bootstrap
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:535: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 0
+  901
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:536: Failure
+Expected equality of these values:
+  result->code[1]
+    Which is: 0
+  902
+[  FAILED  ] end_to_end.bootstrap (0 ms)
+[----------] 1 test from end_to_end (0 ms total)
+
+[----------] 43 tests from lmsm_machine_suite
+[ RUN      ] lmsm_machine_suite.test_add_instruction_works
+[       OK ] lmsm_machine_suite.test_add_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_add_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_add_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sub_instruction_works
+[       OK ] lmsm_machine_suite.test_sub_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sub_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_sub_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_store_instruction_works
+[       OK ] lmsm_machine_suite.test_store_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_load_instruction_works
+[       OK ] lmsm_machine_suite.test_load_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_instruction_works
+[       OK ] lmsm_machine_suite.test_branch_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero
+[       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero
+[       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive (0 ms)
+[ RUN      ] lmsm_machine_suite.test_output_instruction
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/lmsm.cpp:117: Failure
+Expected equality of these values:
+  the_machine->output_buffer
+    Which is: "\n"
+  "10 10 "
+[  FAILED  ] lmsm_machine_suite.test_output_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_halt_instruction
+[       OK ] lmsm_machine_suite.test_halt_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_load_immediate_instruction
+[       OK ] lmsm_machine_suite.test_load_immediate_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_push_instruction
+[       OK ] lmsm_machine_suite.test_push_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
+[       OK ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
+[       OK ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
+[ RUN      ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack
+[       OK ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_drop_instruction_removes_top_of_stack
+[       OK ] lmsm_machine_suite.test_drop_instruction_removes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_drop_instruction_enters_error_state_if_nothing_to_pop
+[       OK ] lmsm_machine_suite.test_drop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
+[ RUN      ] lmsm_machine_suite.test_swap_instruction_swaps_top_of_stack
+[       OK ] lmsm_machine_suite.test_swap_instruction_swaps_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_swap_instruction_enters_error_state_if_nothing_to_swap
+[       OK ] lmsm_machine_suite.test_swap_instruction_enters_error_state_if_nothing_to_swap (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack
+[       OK ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
+[       OK ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_smul_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_call_instruction_jumps_to_correct_location_and_consumes_top_of_stack
+[       OK ] lmsm_machine_suite.test_call_instruction_jumps_to_correct_location_and_consumes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.return_set_program_counter_to_return_address_and_restores_return_address
+[       OK ] lmsm_machine_suite.return_set_program_counter_to_return_address_and_restores_return_address (0 ms)
+[ RUN      ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
+/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/lmsm.cpp:489: Failure
+Expected equality of these values:
+  the_machine->output_buffer
+    Which is: "\n"
+  "10 "
+[  FAILED  ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current (0 ms)
+[ RUN      ] lmsm_machine_suite.step_does_not_step_to_the_next_instruction_and_execute_if_machine_is_halted
+[       OK ] lmsm_machine_suite.step_does_not_step_to_the_next_instruction_and_execute_if_machine_is_halted (0 ms)
+[----------] 43 tests from lmsm_machine_suite (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 90 tests from 5 test suites ran. (1 ms total)
+[  PASSED  ] 45 tests.
+[  FAILED  ] 45 tests, listed below:
+[  FAILED  ] instruction_construction.multiplication_works_in_firth
+[  FAILED  ] instruction_construction.max_works_in_firth
+[  FAILED  ] instruction_construction.make_instruction_basic_instruction_fields_are_set
+[  FAILED  ] instruction_construction.make_instruction_spushi_takes_two_slots
+[  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots
+[  FAILED  ] parsing_tests.simple_instruction_parsing_works
+[  FAILED  ] parsing_tests.two_instruction_parsing_works_w_space
+[  FAILED  ] parsing_tests.two_instruction_parsing_works_w_newline
+[  FAILED  ] parsing_tests.label_is_parsed_correctly
+[  FAILED  ] parsing_tests.numeric_reference_works_for_branch
+[  FAILED  ] parsing_tests.label_reference_works_for_branch
+[  FAILED  ] parsing_tests.unknown_instruction_is_handled
+[  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error
+[  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error
+[  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
+[  FAILED  ] code_generation.sub_instruction_generates_properly
+[  FAILED  ] code_generation.store_instruction_generates_properly
+[  FAILED  ] code_generation.load_immediate_instruction_generates_properly
+[  FAILED  ] code_generation.load_instruction_generates_properly
+[  FAILED  ] code_generation.branch_instruction_generates_properly
+[  FAILED  ] code_generation.branch_if_zero_instruction_generates_properly
+[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly
+[  FAILED  ] code_generation.input_instruction_generates_properly
+[  FAILED  ] code_generation.out_instruction_generates_properly
+[  FAILED  ] code_generation.dat_instruction_generates_properly
+[  FAILED  ] code_generation.spush_instruction_generates_properly
+[  FAILED  ] code_generation.spop_instruction_generates_properly
+[  FAILED  ] code_generation.sdup_instruction_generates_properly
+[  FAILED  ] code_generation.sdrop_instruction_generates_properly
+[  FAILED  ] code_generation.sswap_instruction_generates_properly
+[  FAILED  ] code_generation.sadd_instruction_generates_properly
+[  FAILED  ] code_generation.ssub_instruction_generates_properly
+[  FAILED  ] code_generation.smax_instruction_generates_properly
+[  FAILED  ] code_generation.smin_instruction_generates_properly
+[  FAILED  ] code_generation.smul_instruction_generates_properly
+[  FAILED  ] code_generation.sdiv_instruction_generates_properly
+[  FAILED  ] code_generation.spushi_instruction_generates_properly
+[  FAILED  ] code_generation.call_instruction_generates_properly
+[  FAILED  ] code_generation.ret_instruction_generates_properly
+[  FAILED  ] code_generation.instructions_next_to_one_another_generate_in_order_properly
+[  FAILED  ] code_generation.labels_resolve_at_code_generation_time
+[  FAILED  ] code_generation.bad_label_causes_error
+[  FAILED  ] end_to_end.bootstrap
+[  FAILED  ] lmsm_machine_suite.test_output_instruction
+[  FAILED  ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
+
+45 FAILED TESTS
