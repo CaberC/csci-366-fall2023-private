@@ -84,7 +84,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_UNKNOWN_INSTRUCTION
-    Which is: 0xaaaacff303b0
+    Which is: 0xaaaabcf003b0
 [  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
 [ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:127: Failure
@@ -92,7 +92,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_ARG_REQUIRED
-    Which is: 0xaaaacff303d0
+    Which is: 0xaaaabcf003d0
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
 [ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:134: Failure
@@ -100,7 +100,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaacff303f8
+    Which is: 0xaaaabcf003f8
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
 [ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:141: Failure
@@ -108,7 +108,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaacff303f8
+    Which is: 0xaaaabcf003f8
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
 [----------] 10 tests from parsing_tests (0 ms total)
 
@@ -163,7 +163,7 @@ Expected equality of these values:
   result->code[0]
     Which is: 0
   801
-[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly (0 ms)
+[  FAILED  ] code_generation.branch_if_positive_instruction_generates_properly (1 ms)
 [ RUN      ] code_generation.input_instruction_generates_properly
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:251: Failure
 Expected equality of these values:
@@ -308,9 +308,9 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0xaaaacff303e8
+    Which is: 0xaaaabcf003e8
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
-[----------] 30 tests from code_generation (0 ms total)
+[----------] 30 tests from code_generation (1 ms total)
 
 [----------] 1 test from end_to_end
 [ RUN      ] end_to_end.bootstrap
@@ -427,7 +427,7 @@ Expected equality of these values:
 [----------] 43 tests from lmsm_machine_suite (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 90 tests from 5 test suites ran. (0 ms total)
+[==========] 90 tests from 5 test suites ran. (1 ms total)
 [  PASSED  ] 45 tests.
 [  FAILED  ] 45 tests, listed below:
 [  FAILED  ] instruction_construction.multiplication_works_in_firth
