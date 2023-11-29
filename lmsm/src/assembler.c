@@ -51,7 +51,13 @@ asm_instruction * asm_make_instruction(char* type, char *label, char *label_refe
     } else {
         new_instruction->offset = 0;
     }
-    // TODO: set the number of slots for the instruction into the slots field
+    if(strcmp(type,"CALL") == 0){
+        new_instruction->slots = 3;
+    }else if(strcmp(type, "SPUSHI") == 0){
+        new_instruction->slots = 2;
+    }else{
+        new_instruction->slots = 1;
+    }
     return new_instruction;
 }
 
@@ -111,8 +117,17 @@ int asm_is_num(char * token){
 }
 
 int asm_find_label(asm_instruction *root, char *label) {
-    // TODO - scan the linked list for the given label, return -1 if not found
-    return -1;
+    int out = -1;
+    asm_instruction *inst = root;
+    while (inst != NULL){
+        if (inst->label!=NULL && (strcmp(inst->label, label) == 0)){
+            out = inst->offset;
+            break;
+        }else{
+            inst = inst->next;
+        }
+    }
+    return out;
 }
 
 
@@ -120,44 +135,186 @@ int asm_find_label(asm_instruction *root, char *label) {
 // Assembly Parsing/Scanning
 //======================================================
 
-void asm_parse_src(asm_compilation_result * result, char * original_src){
+void asm_parse_src(asm_compilation_result * result, char * original_src) {
 
     // copy over so strtok can mutate
-    char * src = calloc(strlen(original_src) + 1, sizeof(char));
+    char *src = calloc(strlen(original_src) + 1, sizeof(char));
     strcat(src, original_src);
-    asm_instruction * last_instruction = NULL;
-    asm_instruction * current_instruction = NULL;
+    asm_instruction *last_instruction = NULL;
+    asm_instruction *current_instruction = NULL;
 
-    //TODO - generate a linked list of instructions and store the first into
-    //       the result->root
-    //
-    //       generate the following errors as appropriate:
-    //
-    //       ASM_ERROR_UNKNOWN_INSTRUCTION - when an unknown instruction is encountered
-    //       ASM_ERROR_ARG_REQUIRED        - when an instruction does not have a proper argument passed to it
-    //       ASM_ERROR_OUT_OF_RANGE        - when a number argument is out of range (-999 to 999)
-    //
-    //       store the error in result->error
+    char *tok = strtok(src, " \n");
+
+    while (tok != NULL) {
+
+        char *type = NULL;
+        char *label = NULL;
+        char *label_ref = NULL;
+        int value = 0;
+
+        if(!asm_is_instruction(tok)){//either label or inst
+            label = tok;
+            tok = strtok(NULL, " \n");
+        }
+        if(asm_is_instruction(tok)){
+            type = tok;
+            tok = strtok(NULL, " \n");
+        }else{
+            result->error = ASM_ERROR_UNKNOWN_INSTRUCTION;
+            return;
+        }
+        if(asm_instruction_requires_arg(type)){
+            if(tok == NULL){
+                result->error = ASM_ERROR_ARG_REQUIRED;
+                return;
+            }
+
+            if(asm_is_num(tok)){
+                for(int i=0; i<strlen(tok); i++){
+                    int digit = tok[i]-'0';
+                    value = digit + value*10;
+                }
+                if(value>999 || value<-999){
+                    result->error = ASM_ERROR_OUT_OF_RANGE;
+                    return;
+                }
+            }else{
+                label_ref = tok;
+            }
+            tok = strtok(NULL, " \n");
+        }
+
+        /*
+        char *token = strtok(line, " ");
+        while (token != NULL){
+            char *type = token;
+            token = strtok(NULL, " ");
+            int value = 0;
+            if(token != Null(token[0] < 10 || token[0] == 45)){//"value"'s ascii value is less than the ascii value of 'a', therefore "value" is a number
+                for(int i=0; i<sizeof(token); i++){
+                    int digit = token[i]-'0';
+                    value = digit + value*10;
+                }
+                token = strtok(NULL, " ");
+            }
+        }
+        */
+
+        asm_instruction *inst = asm_make_instruction(type, label, label_ref, value, last_instruction);
+        last_instruction = inst;
+
+        if(result->root == NULL){
+            result->root = inst;
+        }
+
+    }
+
 }
+
 
 //======================================================
 // Machine Code Generation
 //======================================================
 
 void asm_gen_code_for_instruction(asm_compilation_result  * result, asm_instruction *instruction) {
-    //TODO - generate the machine code for the given instruction
-    //
-    // note that some instructions will take up multiple slots
-    //
-    // note that if the instruction has a label reference rather than a raw number reference
-    // you will need to look it up with `asm_find_label` and, if the label does not exist,
-    // report the error as ASM_ERROR_BAD_LABEL
-
-
-    int value_for_instruction = instruction->value;
     if (strcmp("ADD", instruction->instruction) == 0) {
-        result->code[instruction->offset] = 100 + value_for_instruction;
-    } else {
+        result->code[instruction->offset] = 100 + instruction->value;
+    } else if (strcmp("SUB", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 200 +instruction->value;
+    }else if (strcmp("STA", instruction->instruction) == 0) {
+        int loc = instruction->value;
+        if(instruction->label_reference!=NULL){
+            loc = asm_find_label(result->root, instruction->label_reference);
+            if(loc ==-1){
+                result->error = ASM_ERROR_BAD_LABEL;
+                return;
+            }
+        }
+        result->code[instruction->offset] = 300 + loc;
+    }else if (strcmp("LDA", instruction->instruction) == 0) {
+        int loc = instruction->value;
+        if(instruction->label_reference!=NULL){
+            loc = asm_find_label(result->root,instruction->label_reference);
+            if(loc ==-1){
+                result->error = ASM_ERROR_BAD_LABEL;
+                return;
+            }
+        }
+        result->code[instruction->offset] = 500 + loc;
+    }else if (strcmp("BRA", instruction->instruction) == 0) {
+        int loc = instruction->value;
+        if(instruction->label_reference!=NULL){
+            loc = asm_find_label(result->root, instruction->label_reference);
+            if(loc ==-1){
+                result->error = ASM_ERROR_BAD_LABEL;
+                return;
+            }
+        }
+        result->code[instruction->offset] = 600 + loc;
+    }else if (strcmp("BRZ", instruction->instruction) == 0) {
+        int loc = instruction->value;
+        if(instruction->label_reference!=NULL){
+            loc = asm_find_label(result->root, instruction->label_reference);
+            if(loc ==-1){
+                result->error = ASM_ERROR_BAD_LABEL;
+                return;
+            }
+        }
+        result->code[instruction->offset] = 700 + loc;
+    }else if (strcmp("BRP", instruction->instruction) == 0) {
+        int loc = instruction->value;
+        if(instruction->label_reference!=NULL){
+            loc = asm_find_label(result->root, instruction->label_reference);
+            if(loc ==-1){
+                result->error = ASM_ERROR_BAD_LABEL;
+                return;
+            }
+        }
+        result->code[instruction->offset] = 800 + loc;
+    }else if(strcmp("INP",instruction->instruction)==0){
+        result->code[instruction->offset] = 901;
+    }else if(strcmp("OUT",instruction->instruction)==0){
+        result->code[instruction->offset] = 902;
+    }else if(strcmp("HALT",instruction->instruction)==0 || strcmp("COB",instruction->instruction)==0){
+        result->code[instruction->offset] = 0;
+    }else if(strcmp("DAT",instruction->instruction)==0){
+        result->code[instruction->offset] = instruction->value;
+    }else if (strcmp("LDI", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 400 +instruction->value;
+    }else if(strcmp("SPUSH",instruction->instruction)==0){
+        result->code[instruction->offset] = 920;
+    }else if(strcmp("SPOP",instruction->instruction)==0){
+        result->code[instruction->offset] = 921;
+    }else if(strcmp("SDUP",instruction->instruction)==0){
+        result->code[instruction->offset] = 922;
+    }else if(strcmp("SDROP",instruction->instruction)==0){
+        result->code[instruction->offset] = 923;
+    }else if(strcmp("SSWAP",instruction->instruction)==0){
+        result->code[instruction->offset] = 924;
+    }else if(strcmp("SADD",instruction->instruction)==0){
+        result->code[instruction->offset] = 930;
+    }else if(strcmp("SSUB",instruction->instruction)==0){
+        result->code[instruction->offset] = 931;
+    }else if(strcmp("SMUL",instruction->instruction)==0){
+        result->code[instruction->offset] = 932;
+    }else if(strcmp("SDIV",instruction->instruction)==0){
+        result->code[instruction->offset] = 933;
+    }else if(strcmp("SMAX",instruction->instruction)==0){
+        result->code[instruction->offset] = 934;
+    }else if(strcmp("SMIN",instruction->instruction)==0){
+        result->code[instruction->offset] = 935;
+    }else if(strcmp("SPUSHI",instruction->instruction)==0){
+        result->code[instruction->offset] = 400+ instruction->value;
+        result->code[instruction->offset+1] = 920;
+    }else if(strcmp("JAL",instruction->instruction)==0){
+        result->code[instruction->offset] = 910;
+    }else if(strcmp("RET",instruction->instruction)==0){
+        result->code[instruction->offset] = 911;
+    }else if(strcmp("CALL",instruction->instruction)==0){
+        result->code[instruction->offset] = 400+instruction->value;
+        result->code[instruction->offset+1] = 920;
+        result->code[instruction->offset+2] = 910;
+    }else{
         result->code[instruction->offset] = 0;
     }
 
