@@ -38,8 +38,8 @@ Expected equality of these values:
   3
 [  FAILED  ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
 [ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
-[       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (1 ms)
-[----------] 6 tests from instruction_construction (1 ms total)
+[       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
+[----------] 6 tests from instruction_construction (0 ms total)
 
 [----------] 10 tests from parsing_tests
 [ RUN      ] parsing_tests.simple_instruction_parsing_works
@@ -84,7 +84,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_UNKNOWN_INSTRUCTION
-    Which is: 0xaaaac05103b0
+    Which is: 0xaaaae5a403b0
 [  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
 [ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:127: Failure
@@ -92,7 +92,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_ARG_REQUIRED
-    Which is: 0xaaaac05103d0
+    Which is: 0xaaaae5a403d0
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
 [ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:134: Failure
@@ -100,7 +100,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaac05103f8
+    Which is: 0xaaaae5a403f8
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
 [ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:141: Failure
@@ -108,7 +108,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaac05103f8
+    Which is: 0xaaaae5a403f8
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
 [----------] 10 tests from parsing_tests (0 ms total)
 
@@ -308,7 +308,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0xaaaac05103e8
+    Which is: 0xaaaae5a403e8
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
 [----------] 30 tests from code_generation (0 ms total)
 
@@ -427,7 +427,7 @@ Expected equality of these values:
 [----------] 43 tests from lmsm_machine_suite (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 90 tests from 5 test suites ran. (1 ms total)
+[==========] 90 tests from 5 test suites ran. (0 ms total)
 [  PASSED  ] 45 tests.
 [  FAILED  ] 45 tests, listed below:
 [  FAILED  ] instruction_construction.multiplication_works_in_firth
