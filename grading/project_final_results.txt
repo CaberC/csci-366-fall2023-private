@@ -84,7 +84,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_UNKNOWN_INSTRUCTION
-    Which is: 0xaaaadc6f03b0
+    Which is: 0xaaaacfec03b0
 [  FAILED  ] parsing_tests.unknown_instruction_is_handled (0 ms)
 [ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:127: Failure
@@ -92,7 +92,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_ARG_REQUIRED
-    Which is: 0xaaaadc6f03d0
+    Which is: 0xaaaacfec03d0
 [  FAILED  ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
 [ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:134: Failure
@@ -100,7 +100,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaadc6f03f8
+    Which is: 0xaaaacfec03f8
 [  FAILED  ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
 [ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/caber_caldwell/lmsm/test/assembler.cpp:141: Failure
@@ -108,7 +108,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_OUT_OF_RANGE
-    Which is: 0xaaaadc6f03f8
+    Which is: 0xaaaacfec03f8
 [  FAILED  ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
 [----------] 10 tests from parsing_tests (0 ms total)
 
@@ -308,7 +308,7 @@ Expected equality of these values:
   result->error
     Which is: NULL
   ASM_ERROR_BAD_LABEL
-    Which is: 0xaaaadc6f03e8
+    Which is: 0xaaaacfec03e8
 [  FAILED  ] code_generation.bad_label_causes_error (0 ms)
 [----------] 30 tests from code_generation (0 ms total)
 
